@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Java Build with Maven
 
 on:
   push:
@@ -28,9 +28,13 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn --batch-mode --update-snapshots verify
-    - run: mkdir staging && cp target/*.war staging
-    - uses: actions/upload-artifact@v4
+      run: mvn --batch-mode --update-snapshots package
+    - uses: AButler/upload-release-assets@v3.0
       with:
-        name: Package
-        path: staging
+        files: "target/*.war"
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+#    - run: mkdir staging && cp target/*.war staging
+#    - uses: actions/upload-artifact@v4
+#      with:
+#        name: Package
+#        path: staging
