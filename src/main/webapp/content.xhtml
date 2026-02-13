@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:faces="jakarta.faces"
+	xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html"
+	xmlns:ui="jakarta.faces.facelets"
+	xmlns:c="jakarta.tags.core"
+>
+	<h:form id="myContentForm" enctype="multipart/form-data">
+		<h2>#{mainBean.activeView}</h2>
+		<div>
+			<c:forEach items="#{mainBean.activeViewFields}" var="node">
+				#{node.label}: 
+				<h:inputText id="#{node.id}"  value="#{node.value}">
+		        	<f:ajax execute="@this" event="valueChange" listener="#{mainBean.change}" />
+		        </h:inputText>
+			</c:forEach> 	
+		</div>
+	</h:form>
+</ui:composition>

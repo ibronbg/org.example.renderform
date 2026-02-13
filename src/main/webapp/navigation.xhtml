@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:faces="jakarta.faces"
+	xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html"
+	xmlns:ui="jakarta.faces.facelets"
+	xmlns:c="jakarta.tags.core"
+>
+	
+	<h:form id="myNavigationForm">	
+			<h2>Navigation</h2>
+			<div>
+				<h:commandLink
+					id="view1-link"  
+					value="View1"
+					disabled="#{mainBean.activeView == 'View1'}"
+					action="#{mainBean.setActiveView('View1')}">
+								<f:ajax 
+									event="action" 
+									execute="@this" 
+									render=":myContentForm :myMenuForm @form" />
+				</h:commandLink>
+			</div>
+			<div>
+				<h:commandLink
+					id="view2-link"  
+					value="View2"
+					disabled="#{mainBean.activeView == 'View2'}"
+					action="#{mainBean.setActiveView('View2')}">
+  								<f:ajax 
+  									event="action" 
+  									execute="@this" 
+  									render=":myContentForm :myMenuForm @form" />
+				</h:commandLink>
+			</div>
+	</h:form>	
+</ui:composition>

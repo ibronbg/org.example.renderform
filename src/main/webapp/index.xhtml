@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html"
+	xmlns:ui="jakarta.faces.facelets"
+	xmlns:c="jakarta.tags.core"
+>
+	<h:head>
+		<style>
+			.myTest {
+				border: solid 1px black;
+				margin: 5pt 5pt 5pt 5pt;
+				padding: 5pt 5pt 5pt 5pt;
+			}
+		</style>
+	</h:head>
+	
+
+	<h:body>
+		<f:view>
+	        <h:panelGroup layout="block">
+				<h:panelGrid columns="1" styleClass="myTest">
+					<h:panelGroup layout="block" styleClass="myTest">
+						<ui:include src="menu-bar.xhtml" />
+					</h:panelGroup>
+				
+					<h:panelGrid columns="2" layout="block">
+						<h:panelGroup layout="block" styleClass="myTest">
+							<!-- Navigation -->
+							<h:panelGroup layout="block">
+								<ui:include src="navigation.xhtml" />
+							</h:panelGroup>
+						</h:panelGroup>
+						
+						<h:panelGroup layout="block" styleClass="myTest">
+							<!-- Content -->
+							<h:panelGroup layout="block">
+								<ui:include src="content.xhtml" />
+							</h:panelGroup>
+						</h:panelGroup>
+					</h:panelGrid>
+				</h:panelGrid>
+			</h:panelGroup>		
+		</f:view>
+	</h:body>
+</html>

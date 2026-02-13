@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:faces="jakarta.faces"
+	xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html"
+	xmlns:ui="jakarta.faces.facelets"
+	xmlns:c="jakarta.tags.core"
+> 
+	<h:form id="myMenuForm">
+		<span>
+			<h:commandLink action="#{mainBean.button.execute()}" style="color:black;">
+				<f:ajax event="action" execute="@this" render="@form" />
+				#{mainBean.button.label}
+			</h:commandLink>
+		</span>	
+	</h:form>
+</ui:composition>
