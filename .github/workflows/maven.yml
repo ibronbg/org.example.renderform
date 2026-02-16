@@ -96,7 +96,7 @@ jobs:
           draft: true
           prerelease: false
           generate_release_notes: true
-          file:
+          files:
             staging/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
