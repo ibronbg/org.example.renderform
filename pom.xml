@@ -51,6 +51,14 @@
 		</dependency>
 	</dependencies>
 	
+	<distributionManagement>
+	    <repository>
+	        <id>github-release</id>
+	        <name>ibronbg</name>
+	        <url>https://maven.pkg.github.com/ibronbg/org.example.renderform</url>
+	    </repository>
+	</distributionManagement>
+	
 	<build>
 		<plugins>
 			<plugin>
