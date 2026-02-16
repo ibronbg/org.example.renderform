@@ -80,14 +80,24 @@ jobs:
           git tag ${{ env.RELEASE_VERSION }}
           git push origin ${{ env.RELEASE_VERSION }}
       - name: Build
+        id: build-release
         run: |
           mvn -B package --file pom.xml
           mkdir staging && cp target/*.war staging
+      - name: Upload for Release
+        uses: actions/upload-artifact@v4
+        with:
+          name: staging
+          path: staging
   github-release:
     needs: release
     runs-on: ubuntu-latest
     if: ${{ needs.release.outputs.tagged }}
     steps:
+      - name: Download release artifacts
+        uses: actions/download-artifact@v5
+        with:
+          name: staging
       - name: Create github release
         uses: softprops/action-gh-release@v1
         with:
