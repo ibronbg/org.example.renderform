@@ -78,7 +78,11 @@ jobs:
       - name: Tagging stable release
         run: |
           git tag ${{ env.RELEASE_VERSION }}
-          git push origin ${{ env.RELEASE_VERSION }}          
+          git push origin ${{ env.RELEASE_VERSION }}
+      - name: Build
+        run: |
+          mvn -B package --file pom.xml
+          mkdir staging && cp target/*.war staging
   github-release:
     needs: release
     runs-on: ubuntu-latest
@@ -92,6 +96,8 @@ jobs:
           draft: true
           prerelease: false
           generate_release_notes: true
+          file:
+            staging/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   prepare-next:
