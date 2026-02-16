@@ -108,8 +108,8 @@ jobs:
           draft: true
           prerelease: false
           generate_release_notes: true
-          files:
-            staging/*
+          files: |
+            *.war
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   prepare-next:
